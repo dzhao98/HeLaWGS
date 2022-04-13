@@ -4,6 +4,19 @@ conda activate rihanna ##samtools
 samtools index /projects/verhaak-lab/dzhao/HeLasequence/A2/A2hg19.md.rg.bam -@ 20
 
 
-   gatk BaseRecalibrator -I /projects/verhaak-lab/dzhao/HeLasequence/A2/A2hg19.md.rg.bam -R /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta --known-sites /projects/verhaak-lab/verhaak_ref/gatk-cnv/af-only-gnomad.raw.sites.b37.AFgt0.1.vcf.gz -O /projects/verhaak-lab/dzhao/HeLasequence/A2/A2_recal_data.table
+  gatk BaseRecalibrator -I /projects/verhaak-lab/dzhao/HeLasequence/A2/A2hg19.md.rg.bam -R /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta --known-sites /projects/verhaak-lab/verhaak_ref/gatk-cnv/af-only-gnomad.raw.sites.b37.AFgt0.1.vcf.gz -O /projects/verhaak-lab/dzhao/HeLasequence/A2/A2_recal_data.table
  
   gatk BaseRecalibrator -I /projects/verhaak-lab/dzhao/HeLasequence/A13/A13hg19.md.rg.bam -R /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta --known-sites /projects/verhaak-lab/verhaak_ref/gatk-cnv/af-only-gnomad.raw.sites.b37.AFgt0.1.vcf.gz -O /projects/verhaak-lab/dzhao/HeLasequence/A13/A13_recal_data.table
+##Apply BQSR
+
+ gatk ApplyBQSR 
+   -R /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta
+   -I /projects/verhaak-lab/dzhao/HeLasequence/A2/A2hg19.md.rg.bam
+   --bqsr-recal-file /projects/verhaak-lab/dzhao/HeLasequence/A2/A2_recal_data.table
+   -O /projects/verhaak-lab/dzhao/HeLasequence/A2/A2hg19.md.rg.bqsr.bam
+   
+    gatk ApplyBQSR -R /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta -I /projects/verhaak-lab/dzhao/HeLasequence/A2/A2hg19.md.rg.bam --bqsr-recal-file /projects/verhaak-lab/dzhao/HeLasequence/A2/A2_recal_data.table -O /projects/verhaak-lab/dzhao/HeLasequence/A2/A2hg19.md.rg.bqsr.bam
+    
+    gatk ApplyBQSR -R /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta -I /projects/verhaak-lab/dzhao/HeLasequence/A13/A13hg19.md.rg.bam --bqsr-recal-file /projects/verhaak-lab/dzhao/HeLasequence/A13/A13_recal_data.table -O /projects/verhaak-lab/dzhao/HeLasequence/A13/A13hg19.md.rg.bqsr.bam
+
+    sh bin/run_nf_aa.sh -a aa -n TEST -i /projects/verhaak-lab/dzhao/aa/nextflow-aa/manifest/test_input.csv -e dacheng.zhao@jax.org -s aa
