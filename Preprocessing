@@ -19,4 +19,10 @@ samtools index /projects/verhaak-lab/dzhao/HeLasequence/A2/A2hg19.md.rg.bam -@ 2
     
     gatk ApplyBQSR -R /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta -I /projects/verhaak-lab/dzhao/HeLasequence/A13/A13hg19.md.rg.bam --bqsr-recal-file /projects/verhaak-lab/dzhao/HeLasequence/A13/A13_recal_data.table -O /projects/verhaak-lab/dzhao/HeLasequence/A13/A13hg19.md.rg.bqsr.bam
 
+    ##interactive job to run aa
+    
+    srun -q batch -N 1 -n 48 --mem 200G -t 72:00:00 --pty bash
+    sh bin/run_nf_aa.sh -a aa -d 0 -g 5 -m 50000 -n HeLa -i /projects/verhaak-lab/dzhao/aa/nextflow-aa/HeLaAA.csv -o /projects/verhaak-lab/dzhao/aa/nextflow-aa/results -e dacheng.zhao@jax.org -s prepare_targets
+    sh bin/run_nf_aa.sh -a aa -d 0 -g 5 -m 50000 -n HeLa -i /projects/verhaak-lab/dzhao/aa/nextflow-aa/HeLaAA.csv -o /projects/verhaak-lab/${USER}/nextflow-aa/results -e dacheng.zhao@jax.org  -s run_aa
+
     sh bin/run_nf_aa.sh -a aa -n TEST -i /projects/verhaak-lab/dzhao/aa/nextflow-aa/manifest/test_input.csv -e dacheng.zhao@jax.org -s aa
