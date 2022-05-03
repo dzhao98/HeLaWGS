@@ -24,5 +24,11 @@ samtools index /projects/verhaak-lab/dzhao/HeLasequence/A2/A2hg19.md.rg.bam -@ 2
     srun -q batch -N 1 -n 48 --mem 200G -t 72:00:00 --pty bash
     sh bin/run_nf_aa.sh -a aa -d 0 -g 5 -m 50000 -n HeLa -i /projects/verhaak-lab/dzhao/aa/nextflow-aa/HeLaAA.csv -o /projects/verhaak-lab/dzhao/aa/nextflow-aa/results -e dacheng.zhao@jax.org -s prepare_targets
     sh bin/run_nf_aa.sh -a aa -d 0 -g 5 -m 50000 -n HeLa -i /projects/verhaak-lab/dzhao/aa/nextflow-aa/HeLaAA.csv -o /projects/verhaak-lab/${USER}/nextflow-aa/results -e dacheng.zhao@jax.org  -s run_aa
+    sh bin/run_nf_aa.sh -a aa -d 0 -g 5 -m 50000 -n HeLa -i /projects/verhaak-lab/dzhao/aa/nextflow-aa/HeLaAA.csv -o /projects/verhaak-lab/dzhao/aa/nextflow-aa/results -e dacheng.zhao@jax.org -s postprocess_aa
 
     sh bin/run_nf_aa.sh -a aa -n TEST -i /projects/verhaak-lab/dzhao/aa/nextflow-aa/manifest/test_input.csv -e dacheng.zhao@jax.org -s aa
+    sh bin/run_nf_aa.sh -a aa -n HeLa -i /projects/verhaak-lab/dzhao/aa/nextflow-aa/HeLaAA.csv -e dacheng.zhao@jax.org -s aa
+OUTPUT_RESULTS_DIR/results/AA_MODE/BATCH_NAME/CNV_CALLER/filterBed_[FILTER_BED]/minCN[GAIN]/cnsizeMin[CNSIZE_MIN]/[DOWNSAMPLE]X/aaver-JensVer1.2/calls/OUTPUT_BARCODE
+/projects/verhaak-lab/GLASS-NF/results/results/aa/GLASS/cnvkit/filterBed_true/minCN4/cnsizeMin10000/0X/aaver-JensVer1.2   
+
+/projects/verhaak-lab/GLASS-NF/results/results/aa/GLASS/cnvkit/filterBed_true/minCN4/cnsizeMin10000/0X/aaver-JensVer1.2   
