@@ -32,3 +32,6 @@ OUTPUT_RESULTS_DIR/results/AA_MODE/BATCH_NAME/CNV_CALLER/filterBed_[FILTER_BED]/
 /projects/verhaak-lab/GLASS-NF/results/results/aa/GLASS/cnvkit/filterBed_true/minCN4/cnsizeMin10000/0X/aaver-JensVer1.2   
 
 /projects/verhaak-lab/GLASS-NF/results/results/aa/GLASS/cnvkit/filterBed_true/minCN4/cnsizeMin10000/0X/aaver-JensVer1.2   
+
+##temp result file 
+/fastscratch/c-zhaod/nextflow_tmp/84/d5ac721c0f8e43479582f0abc89b83
